@@ -9,6 +9,7 @@ export const AzareusLogo: React.FC<{ size?: number }> = ({ size = 48 }) => {
       viewBox="0 0 48 48"
       role="img"
       aria-label="Azareus"
+      className="rounded"
     >
       <rect width="48" height="48" rx="8" fill="#0f172a" />
       <g transform="translate(8,8)" fill="none" stroke="#06b6d4" strokeWidth="2">

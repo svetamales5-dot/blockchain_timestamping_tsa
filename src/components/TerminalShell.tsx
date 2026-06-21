@@ -31,22 +31,22 @@ export const TerminalShell: React.FC<{ onCommand: TerminalCommandHandler }> = ({
   };
 
   return (
-    <div style={{ background: '#0b1220', color: '#d1d5db', padding: 12, borderRadius: 6, fontFamily: 'monospace' }}>
-      <div style={{ minHeight: 200, maxHeight: 320, overflow: 'auto', padding: 8 }}>
+    <div className="bg-slate-900 text-slate-100 p-4 rounded font-mono">
+      <div className="min-h-[200px] max-h-[320px] overflow-auto p-2 space-y-1">
         {lines.map((l, i) => (
-          <div key={i}>{l}</div>
+          <div key={i} className="whitespace-pre-wrap">{l}</div>
         ))}
       </div>
 
-      <form onSubmit={onSubmit} style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+      <form onSubmit={onSubmit} className="flex gap-2 mt-3">
         <input
           ref={inputRef}
           value={input}
           onChange={e => setInput(e.target.value)}
-          style={{ flex: 1, padding: 8, borderRadius: 4 }}
+          className="flex-1 px-3 py-2 rounded bg-slate-800 text-slate-100 border border-slate-700"
           placeholder="enter command (help)"
         />
-        <button type="submit">Run</button>
+        <button type="submit" className="px-3 py-2 bg-sky-600 text-white rounded">Run</button>
       </form>
     </div>
   );

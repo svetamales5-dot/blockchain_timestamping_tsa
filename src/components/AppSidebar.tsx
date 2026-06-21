@@ -20,34 +20,32 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   onCreateFork,
 }) => {
   return (
-    <aside style={{ width: 300, padding: 16, borderRight: '1px solid #eee' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+    <aside className="w-72 p-4 border-r bg-white">
+      <div className="flex items-center gap-3">
         <AzareusLogo size={40} />
         <div>
-          <strong>Azareus</strong>
-          <div style={{ fontSize: 12, color: '#666' }}>Blockchain UI</div>
+          <div className="font-semibold">Azareus</div>
+          <div className="text-xs text-gray-500">Blockchain UI</div>
         </div>
       </div>
 
-      <section style={{ marginTop: 20 }}>
-        <h4>Chain</h4>
-        <div>Blocks: {chainLength}</div>
-        <div style={{ wordBreak: 'break-all', fontSize: 12, color: '#444' }}>
-          Head: {headHash ?? '—'}
-        </div>
-        <button onClick={() => onCreateFork?.(headHash)} style={{ marginTop: 8 }}>
+      <section className="mt-6">
+        <h4 className="font-medium text-sm">Chain</h4>
+        <div className="text-sm">Blocks: {chainLength}</div>
+        <div className="break-words text-xs text-gray-600">Head: {headHash ?? '—'}</div>
+        <button onClick={() => onCreateFork?.(headHash)} className="mt-2 px-3 py-1 bg-sky-500 text-white rounded text-sm">
           Create fork from head
         </button>
       </section>
 
-      <section style={{ marginTop: 20 }}>
-        <h4>Forks</h4>
+      <section className="mt-6">
+        <h4 className="font-medium text-sm">Forks</h4>
         {forks.length === 0 ? (
-          <div style={{ fontSize: 12, color: '#888' }}>No forks</div>
+          <div className="text-xs text-gray-400">No forks</div>
         ) : (
-          <ul>
+          <ul className="mt-2 space-y-1 text-xs">
             {forks.map(f => (
-              <li key={f.id}>
+              <li key={f.id} className="truncate">
                 {f.id.slice(0, 8)} — blocks: {f.blocks}
               </li>
             ))}
@@ -55,13 +53,11 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
         )}
       </section>
 
-      <section style={{ marginTop: 20 }}>
-        <h4>API keys</h4>
-        <div style={{ fontSize: 12 }}>
-          {apiKeys.length} keys
-          <div style={{ marginTop: 8 }}>
-            <button onClick={onCreateKey}>Create key</button>
-          </div>
+      <section className="mt-6">
+        <h4 className="font-medium text-sm">API keys</h4>
+        <div className="text-xs text-gray-700">{apiKeys.length} keys</div>
+        <div className="mt-2">
+          <button onClick={onCreateKey} className="px-3 py-1 bg-emerald-500 text-white rounded text-sm">Create key</button>
         </div>
       </section>
     </aside>
